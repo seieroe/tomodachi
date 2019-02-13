@@ -2,13 +2,22 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
-      if @chat.messages.last.try(:content)
-          @chat.messages.build
-      end
+      # if @chat.messages.last.try(:content)
+      #     @chat.messages.build
+      # end
+    @message = Message.new(content: params[:content], user_id: params[:user_id], valentime: params[:valentime], chat_id: params[:chat_id])
+    # @chat.messages.build
+    # @chat.messages.build
+
   end
+
 
   def message
     @message = Message.create(params[chat_id: @chat.id, content: @message.content])
+  end
+
+  def new
+    @message = Message.new
   end
 
 
