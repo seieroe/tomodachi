@@ -17,6 +17,16 @@ class HeartStringsController < ApplicationController
     @heart_string = HeartString.find(params[:id])
   end
 
+  def chat
+    @chat = Chat.create
+    @heart_string = HeartString.find(params[:id])
+
+    UserChat.create(user: @heart_string.user, chat: @chat)
+    UserChat.create(user: @heart_string.tomodachi, chat: @chat)
+
+    redirect_to chat_path(@chat)
+  end
+
   private
 
   def heart_string_params
