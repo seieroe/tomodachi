@@ -1,0 +1,17 @@
+
+#has text field for text entry
+#has submit button for textarea
+#posts text to page
+#posts persist forever on the page (new instance of a message object)
+
+<% @chat.messages.each do  |message| %>
+<p> <%= message.user.name %> says </p>
+<p> <%= message.content %> </p>
+<p> <%= message.valentime %> </p>
+<% end %>
+
+<%= f.hidden_field :user_id %>
+<%= f.hidden_field :valentime %>
+
+<%= link_to 'add message', @chat %>
+form_for [@chat, @chat.messages.build]

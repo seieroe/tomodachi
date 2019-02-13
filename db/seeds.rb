@@ -5,12 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+HeartString.destroy_all
+Chat.destroy_all
+Message.destroy_all
+UserChat.destroy_all
 
-
-emily = User.create(name: "emily", email: "emily@honeyco.nyc", password_digest: "pass")
-sarah = User.create(name: "sarah", email: "sarahsujin.shin@gmail.com", password_digest: "pass")
-elizabeth = User.create(name: "elizabeth", email: "e.e.seieroe@gmail.com", password_digest: "pass")
-
+emily = User.create(name: "emily", email: "emily@honeyco.nyc", password: "pass")
+sarah = User.create(name: "sarah", email: "sarahsujin.shin@gmail.com", password: "pass")
+elizabeth = User.create(name: "elizabeth", email: "e.e.seieroe@gmail.com", password: "pass")
+byebug
 hs1 = HeartString.create(user_id: 1, tomodachi_id: 2)
 hs2 = HeartString.create(user_id: 1, tomodachi_id: 3)
 hs3 = HeartString.create(user_id: 2, tomodachi_id: 3)
@@ -23,12 +27,12 @@ c2 = Chat.create(heart_string_id: 3)
 c3 = Chat.create(heart_string_id: 4)
 
 m1 = Message.create(user_id: 1, chat_id: 1, content: "hey", valentime: Time.now)
-m2 = Message.create(tomodachi_id: 2, chat_id: 1, content: "hi!", valentime: Time.now)
+m2 = Message.create(user_id: 2, chat_id: 1, content: "hi!", valentime: Time.now)
 m3 = Message.create(user_id: 1, chat_id: 1, content: "i think you're great", valentime: Time.now)
-m4 = Message.create(tomodachi_id: 2, chat_id: 1, content: "thanks :)", valentime: Time.now)
+m4 = Message.create(user_id: 2, chat_id: 1, content: "thanks :)", valentime: Time.now)
 m5 = Message.create(user_id: 2, chat_id: 2, content: "omg hi", valentime: Time.now)
 m6 = Message.create(user_id: 2, chat_id: 2, content: "whats up", valentime: Time.now)
-m7 = Message.create(user_id: 2, tomodachi_id: 3, chat_id: 2, content: "everything is perfect", valentime: Time.now)
+m7 = Message.create(user_id: 2, chat_id: 2, content: "everything is perfect", valentime: Time.now)
 m8 = Message.create(user_id: 2, chat_id: 2, content: "i know :)", valentime: Time.now)
 
 uc1 = UserChat.create(user_id: 1, tomodachi_id: 2, chat_id: 1)
