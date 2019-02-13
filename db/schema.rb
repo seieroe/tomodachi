@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_164244) do
+ActiveRecord::Schema.define(version: 2019_02_13_162042) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "heart_string_id"
   end
 
   create_table "heart_strings", force: :cascade do |t|

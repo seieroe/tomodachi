@@ -6,4 +6,5 @@ class Chat < ApplicationRecord
 
   accepts_nested_attributes_for :messages
 
+  belongs_to :heart_string
 end
