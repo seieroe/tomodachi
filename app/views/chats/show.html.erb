@@ -1,0 +1,21 @@
+#has text field for text entry
+#has submit button for textarea
+#posts text to page
+#posts persist forever on the page (new instance of a message object)
+
+
+
+
+
+
+<%= form_for @chat do |f| %>
+  <ul>
+    <%= f.fields_for :messages do |message| %>
+    <li>
+      write a message: <%= message.text_field :content %>
+    </li>
+    <% end %>
+    <%= link_to 'add message', @chat %>
+  </ul>
+  <%= f.submit %>
+<% end %>
