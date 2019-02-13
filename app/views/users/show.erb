@@ -1,1 +1,11 @@
-<h1><%= @user.name %></h1>
+<h1>Welcome, <%=@user.name.capitalize %>!</h1>
+
+<h4><%= link_to "Make a heartstring!", new_heart_string_path %></h4>
+
+<h4>Your Tomodachis:</h4>
+<ul>
+  <% @user.tomodachis.each do |tomodachi| %>
+    #link to chat with each tomodachi
+    <li><%=tomodachi.name %></li>
+  <% end %>
+</ul>

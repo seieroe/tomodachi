@@ -18,9 +18,9 @@ hs4 = HeartString.create(user_id: 3, tomodachi_id: 4)
 hs5 = HeartString.create(user_id: 3, tomodachi_id: 5)
 
 
-c1 = Chat.create
-c2 = Chat.create
-c3 = Chat.create
+c1 = Chat.create(heart_string_id: 2)
+c2 = Chat.create(heart_string_id: 3)
+c3 = Chat.create(heart_string_id: 4)
 
 m1 = Message.create(user_id: 1, tomodachi_id: 2, chat_id: 1, content: "hey", valentime: Time.now)
 m2 = Message.create(user_id: 1, tomodachi_id: 2, chat_id: 1, content: "hi!", valentime: Time.now)
