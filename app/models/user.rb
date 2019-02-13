@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  
+
   has_many :heart_strings
   has_many :tomodachis, through: :heart_strings
   has_many :inverse_heart_strings, class_name: "User"
@@ -12,5 +12,4 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, presence: true
   validates :name, presence: true
-
 end

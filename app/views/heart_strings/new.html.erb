@@ -1,7 +1,7 @@
-<%= form_for @heartstring do |f| %>
-  <%= f.text_field :field %>
-  <%= f.label :user %>
-  <%= f.string :user.id.name %>
-  <%= f.label :tomodachi %>
-  <%= f.string :name %>
+<%= form_for @heart_string do |f| %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
+  <%= f.label :tomodachi_id %>
+  <%= f.text_field :tomodachi_id %>
+  <%= f.submit %>
 <% end %>
