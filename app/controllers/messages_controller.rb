@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
 
   def create
-    # byebug
     @message = Message.create(message_params)
     redirect_to chat_path(@message.chat.id)
   end

@@ -9,7 +9,7 @@
 <ul>
   <% current_user.tomodachis.each do |tomodachi| %>
   <br>
-   <br>😍 <%= link_to tomodachi.name, heart_string_path(current_user.heart_strings.find_by(params[tomodachi.id])) %>
+   <br>😍<%= link_to tomodachi.name, heart_string_path(current_user.heart_strings.find_by(params[tomodachi.id])) %>
    <br>
   <% end %>
 </ul>
