@@ -7,4 +7,17 @@ My HeartString
 
 Chats
 <ul>
-<p> <%= link_to 'START CHAT', start_chat_path %> </p>
+<p> <%= link_to 'START CHAT', start_chat_path(@heart_string) %> </p>
+
+
+photos of you guys 💕
+
+<%= form_for @photo do |f| %>
+  <%= f.file_field :photo %>
+  <%= f.hidden_field :heart_string_id %>
+  <%= f.submit %>
+<% end %>
+
+<% @heart_string.photos.each do |photo| %>
+<%= image_tag photo.photo %>
+<% end %>
