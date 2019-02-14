@@ -17,6 +17,8 @@ class HeartStringsController < ApplicationController
 
   def show
     @heart_string = HeartString.find(params[:id])
+    @photo = Photo.new(heart_string: @heart_string)
+
   end
 
   def chat
@@ -29,6 +31,8 @@ class HeartStringsController < ApplicationController
 
     redirect_to chat_path(@chat)
   end
+
+
 
   private
 
