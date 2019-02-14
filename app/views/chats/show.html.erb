@@ -1,37 +1,41 @@
 
 chat page
 
+<% if @current_user == @chat.heart_string.user || @current_user == @chat.heart_string.tomodachi %>
+  <%= form_for @message do |f| %>
+    <ul>
+      write a message: <%= f.text_field :content %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :chat_id %>
+      <%= f.hidden_field :valentime, value: Time.now %>
+    </ul>
 
-<%= form_for @message do |f| %>
-  <ul>
-    write a message: <%= f.text_field :content %>
-    <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :chat_id %>
-    <%= f.hidden_field :valentime, value: Time.now %>
-  </ul>
+    <br>
 
-  <br>
-
-  <%= f.submit %>
-<% end %>
-
-
+    <%= f.submit %>
+  <% end %>
 
 
-your chat :
-<% @chat.messages.reverse_order.each do  |message| %>
-<div class="row">
-  <div class="col">
-     <%= message.user.name %> says
 
+
+  your chat :
+  <% @chat.messages.reverse_order.each do  |message| %>
+  <div class="row">
+    <div class="col">
+       <%= message.user.name %> says
+
+    </div>
+    <div class="col">
+       <%= message.content %>
+
+    </div>
+    <div class="col">
+       <%= message.valentime %>
+
+    </div>
   </div>
-  <div class="col">
-     <%= message.content %>
+  <% end %>
+<% else %>
+<p>Sorry. You do not have access to this page!</p>
 
-  </div>
-  <div class="col">
-     <%= message.valentime %>
-
-  </div>
-</div>
 <% end %>
