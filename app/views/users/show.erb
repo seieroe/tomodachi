@@ -3,13 +3,13 @@
 
 
 
-<h4><%= link_to "make a new heartstring 💕", new_heart_string_path %></h4>
+<h4><%= link_to "make new heartstring 💕", new_heart_string_path %></h4>
 
 <h4> 💕 your tomodachis: 💕</h4>
 <ul>
   <% current_user.tomodachis.each do |tomodachi| %>
   <br>
-   <br>😍 <%= link_to tomodachi.name, heart_string_path(current_user.heart_strings.find_by(tomodachi[:id])) %>
+   <br>😍 <%= link_to tomodachi.name, heart_string_path(current_user.heart_strings.find_by(params[tomodachi.id])) %>
    <br>
   <% end %>
 </ul>
