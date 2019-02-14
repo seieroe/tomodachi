@@ -1,16 +1,16 @@
 class ChatsController < ApplicationController
+  before_action :authorized
 
   def show
     @chat = Chat.find(params[:id])
       # if @chat.messages.last.try(:content)
       #     @chat.messages.build
       # end
-    @message = Message.new(content: params[:content], user_id: params[:user_id], valentime: params[:valentime], chat_id: params[:chat_id])
+    @message = Message.new(chat: @chat, user: current_user)
+    # content: params[:content], user_id: params[:user_id], valentime: params[:valentime], chat_id: params[:chat_id]
     # @chat.messages.build
     # @chat.messages.build
-
   end
-
 
   def message
     @message = Message.create(params[chat_id: @chat.id, content: @message.content])
@@ -20,8 +20,6 @@ class ChatsController < ApplicationController
     @message = Message.new
   end
 
-
-
   def update
     chat = Chat.find(params[:id])
     chat.update(chat_params)
@@ -29,10 +27,10 @@ class ChatsController < ApplicationController
   end
 
 
+
   private
 
   def chat_params
     params.require(:chat).permit(:heart_string_id, messages_attributes: [:user_id, :tomodachi_id, :chat_id, :content, :valentime])
   end
-
 end

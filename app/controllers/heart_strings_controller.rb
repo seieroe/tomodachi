@@ -5,7 +5,9 @@ class HeartStringsController < ApplicationController
   end
 
   def create
-    @heart_string = HeartString.new(heart_string_params)
+    @heart_string = HeartString.new(user: current_user, tomodachi_id: heart_string_params[:tomodachi_id])
+
+    # @heart_string = HeartString.new(heart_string_params)
     if @heart_string.save
       redirect_to heart_string_path(@heart_string)
     else
@@ -18,11 +20,12 @@ class HeartStringsController < ApplicationController
   end
 
   def chat
-    @chat = Chat.create
-    @heart_string = HeartString.find(params[:id])
+    # binding.pry
+    @heart_string = HeartString.find(params[:heart_string_id])
+    @chat = Chat.create!(heart_string: @heart_string)
 
-    UserChat.create(user: @heart_string.user, chat: @chat)
-    UserChat.create(user: @heart_string.tomodachi, chat: @chat)
+    # UserChat.create!(user: @heart_string.user, chat: @chat)
+    # UserChat.create!(user: @heart_string.tomodachi, chat: @chat)
 
     redirect_to chat_path(@chat)
   end
@@ -32,7 +35,4 @@ class HeartStringsController < ApplicationController
   def heart_string_params
     params.require(:heart_string).permit(:user_id, :tomodachi_id)
   end
-
-
-
 end

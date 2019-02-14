@@ -4,12 +4,31 @@
     <title>Tomodachi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <!-- BEFORE_YIELD -->
+    <div class="container">
+      <nav class="nav">
+        <a class="nav-link active" href="/current_user">💘 Home</a>
+        <a class="nav-link" href="#">💘 Chat</a>
+        <% if current_user  %>
+        <a class="nav-link active" href="/logout">💘 Log Out</a>
+
+        <% else %>
+        <a class="nav-link active" href="/login">💘 Log In</a>
+        
+        <% end %>
+
+
+
+      </nav>
+      <%= yield %>
+  <!-- Content here -->
+    </div>
+    <!-- AFTER_YIELD -->
   </body>
 </html>
