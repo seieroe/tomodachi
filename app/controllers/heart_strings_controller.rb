@@ -6,7 +6,7 @@ class HeartStringsController < ApplicationController
 
   def create
     @heart_string = HeartString.new(user: current_user, tomodachi_id: heart_string_params[:tomodachi_id])
-
+    # @inverse_heart_string = HeartString.new(user: heart_string_params[:tomodachi_id], tomodachi_id: current_user.id)
     # @heart_string = HeartString.new(heart_string_params)
     if @heart_string.save
       redirect_to heart_string_path(@heart_string)
