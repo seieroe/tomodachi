@@ -8,8 +8,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.valid?
-      @user.save
-      redirect_to user_path(@user)
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      end
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path
@@ -19,6 +21,8 @@ class UsersController < ApplicationController
   def show
     # @user = User.find(params[:id])
   end
+
+
 
   private
 

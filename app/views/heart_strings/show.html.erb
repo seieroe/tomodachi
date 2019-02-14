@@ -1,21 +1,18 @@
-My HeartString
-<br>
-<li> <%= @heart_string.user.name %> </li>
-      &&&&&
-<li> <%= @heart_string.tomodachi.name %> </li>
+<h1><%= @heart_string.user.name %> & <%= @heart_string.tomodachi.name %></h1>
+
+<% if @heart_string.chat %>
+  <%= link_to "continue chatting with #{@heart_string.tomodachi.name}", chat_path(@heart_string.chat) %>
+<% else %>
+  <%= link_to 'start chat', start_chat_path(@heart_string) %>
+<% end %>
 
 
-Chats
-<ul>
-<p> <%= link_to 'START CHAT', start_chat_path(@heart_string) %> </p>
-
-
-photos of you guys 💕
+<h4> photos </h4>
 
 <%= form_for @photo do |f| %>
   <%= f.file_field :photo %>
   <%= f.hidden_field :heart_string_id %>
-  <%= f.submit %>
+  <%= f.submit "Add Photo"%>
 <% end %>
 
 <% @heart_string.photos.each do |photo| %>

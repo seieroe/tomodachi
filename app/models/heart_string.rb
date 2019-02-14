@@ -6,4 +6,5 @@ class HeartString < ApplicationRecord
 
   # validates :tomodachi_id, allow_blank :true
 
+
 end

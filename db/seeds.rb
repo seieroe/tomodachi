@@ -14,7 +14,7 @@ UserChat.destroy_all
 emily = User.create(name: "emily", email: "emily@honeyco.nyc", password: "pass")
 sarah = User.create(name: "sarah", email: "sarahsujin.shin@gmail.com", password: "pass")
 elizabeth = User.create(name: "elizabeth", email: "e.e.seieroe@gmail.com", password: "pass")
-byebug
+
 hs1 = HeartString.create(user_id: 1, tomodachi_id: 2)
 hs2 = HeartString.create(user_id: 1, tomodachi_id: 3)
 hs3 = HeartString.create(user_id: 2, tomodachi_id: 3)

@@ -12,4 +12,11 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, presence: true
   validates :name, presence: true
+
+  def all_heart_strings
+    @all_heart_strings = HeartString.all.select do |heart_string|
+      @current_user == heart_string.user || @current_user == heart_string.tomodachi
+    end
+  end
+
 end

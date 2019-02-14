@@ -14,13 +14,10 @@
     <div class="container">
       <nav class="nav">
         <a class="nav-link active" href="/current_user">💘 Home</a>
-        <a class="nav-link" href="#">💘 Chat</a>
         <% if current_user  %>
-        <a class="nav-link active" href="/logout">💘 Log Out</a>
-
-        <% else %>
-        <a class="nav-link active" href="/login">💘 Log In</a>
-        
+          <a class="nav-link active" href="/logout">💘 Log Out</a>
+          <% else %>
+          <a class="nav-link active" href="/login">💘 Log In</a>
         <% end %>
 
 

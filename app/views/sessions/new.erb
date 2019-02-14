@@ -1,9 +1,7 @@
-
-<h1>Login</h1>
+<h1>Log Into Your Account</h1>
 
 <h4><%= flash[:notice] %></h4>
 
-<!-- form will POST to '/login' -->
 <%= form_tag(login_path) do %>
   <%= label_tag :email %>
   <%= text_field_tag :email %><br>
@@ -14,5 +12,5 @@
   <%= submit_tag 'Login' %><br><br>
 <% end %>
 
-<!-- <p>Don't have an existing account?</p>
-<%= button_to "Create New Account", new_user_path %> -->
+<p>OR: </p>
+<%= button_to "Create New Account", new_user_path, method: :get %>
