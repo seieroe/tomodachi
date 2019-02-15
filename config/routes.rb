@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/current_user', to: 'users#show', as: 'current_user'
   resources :photos
   resources :messages
   resources :user_chats
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
-  get '/current_user', to: 'users#show'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

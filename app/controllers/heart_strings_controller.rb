@@ -5,10 +5,12 @@ class HeartStringsController < ApplicationController
   end
 
   def create
-    @heart_string = HeartString.new(user: current_user, tomodachi_id: heart_string_params[:tomodachi_id])
-    if @heart_string.save
+    @heart_string = HeartString.new(heart_string_params)
+    if @heart_string.valid?
+      @heart_string.save
       redirect_to heart_string_path(@heart_string)
     else
+      flash[:errors] = @heart_string.errors.full_messages
       render :new
     end
   end

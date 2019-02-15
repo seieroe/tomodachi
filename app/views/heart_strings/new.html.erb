@@ -1,6 +1,13 @@
+<% if !!flash[:errors] %>
+  <% flash[:errors].each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <%= form_for @heart_string do |f| %>
 who is your tomodachi ?
   <%= current_user.name %>
-  <%= f.collection_select :tomodachi_id, User.all, :id, :name %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.collection_select :tomodachi_id, User.all.where.not(id: current_user.id), :id, :name %>
   <%= f.submit %>
 <% end %>
