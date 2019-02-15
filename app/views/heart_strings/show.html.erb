@@ -1,7 +1,11 @@
 <h1><%= @heart_string.user.name %> & <%= @heart_string.tomodachi.name %></h1>
 
 <% if @heart_string.chat %>
-  <%= link_to "continue chatting with #{@heart_string.tomodachi.name}", chat_path(@heart_string.chat) %>
+  <% if @heart_string.tomodachi != current_user %>
+    <%= link_to "continue chatting with #{@heart_string.tomodachi.name}", chat_path(@heart_string.chat) %>
+  <% else %>
+    <%= link_to "continue chatting with #{@heart_string.user.name}", chat_path(@heart_string.chat) %>
+  <% end %>
 <% else %>
   <%= link_to 'start chat', start_chat_path(@heart_string) %>
 <% end %>

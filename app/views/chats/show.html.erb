@@ -1,40 +1,39 @@
 
-chat page
+<h3 class="text-center"> chat page  </h3>
 
 <% if @current_user == @chat.heart_string.user || @current_user == @chat.heart_string.tomodachi %>
-  <%= form_for @message do |f| %>
-    <ul>
-      write a message: <%= f.text_field :content %>
-      <%= f.hidden_field :user_id %>
-      <%= f.hidden_field :chat_id %>
-      <%= f.hidden_field :valentime, value: Time.now %>
-    </ul>
 
-    <br>
-
-    <%= f.submit %>
-  <% end %>
+<%= form_for @message do |f| %>
+  <p>
+<p class="text-center">    write a message: <%= f.text_field :content %> </p>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :chat_id %>
+    <%= f.hidden_field :valentime, value: Time.now %>
+  </p>
+<p class="text-center"> <%= f.submit class: "btn btn-light" %> </p>
+<% end %>
 
 
 
 
-  your chat :
-  <% @chat.messages.reverse_order.each do  |message| %>
-  <div class="row">
-    <div class="col">
-       <%= message.user.name %> says
+your chat :
+<% @chat.messages.reverse_order.each do  |message| %>
+<div class="row">
+  <div class="col">
+     <%= message.user.name %> says
 
-    </div>
-    <div class="col">
-       <%= message.content %>
-
-    </div>
-    <div class="col">
-       <%= message.valentime %>
-
-    </div>
   </div>
-  <% end %>
+  <div class="col">
+     <%= message.content %>
+
+  </div>
+  <div class="col">
+     <%= message.valentime.strftime("%b %d, %l:%M %P") %>
+
+  </div>
+</div>
+<% end %>
+
 <% else %>
 <p>Sorry. You do not have access to this page!</p>
 
