@@ -14,5 +14,7 @@
  *= require_self
  */
  body {
-   background-color: pink;
+   background-color: ffccff;
+   font-family: 'Mukta', sans-serif;
+   font-family: 'Anton', sans-serif;
  }

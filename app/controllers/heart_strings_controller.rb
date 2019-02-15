@@ -16,9 +16,10 @@ class HeartStringsController < ApplicationController
   end
 
   def show
-    # byebug
+
     @heart_string = HeartString.find(params[:id])
     @photo = Photo.new(heart_string: @heart_string)
+
   end
 
   def chat
