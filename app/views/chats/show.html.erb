@@ -1,40 +1,87 @@
-
+<br>
 <h3 class="text-center"> chat page  </h3>
+<br>
+
+
 
 <% if @current_user == @chat.heart_string.user || @current_user == @chat.heart_string.tomodachi %>
 
-<%= form_for @message do |f| %>
-  <p>
-<p class="text-center">    write a message: <%= f.text_field :content %> </p>
-    <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :chat_id %>
-    <%= f.hidden_field :valentime, value: Time.now %>
-  </p>
-<p class="text-center"> <%= f.submit class: "btn btn-light" %> </p>
-<% end %>
+  <%= form_for @message do |f| %>
+    <p>
+  <p class="text-center">    write a message: <%= f.text_field :content %> </p>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :chat_id %>
+      <%= f.hidden_field :valentime, value: Time.now %>
+    </p>
+  <p class="text-center"> <%= f.submit class: "btn btn-light" %> </p>
+  <% end %>
 
+  <div class="chat-center-width">
+    your chat : <%= @chat.messages.length%> message(s)
+    <% @chat.messages.reverse_order.each do  |message| %>
+    <div class="row">
 
+        <div class="col">
+          <% if current_user == message.user %>
+            <div class="user-chat"><%= message.user.name %> says:</div>
+          <% else %>
+            <div class="dachi-chat"><%= message.user.name %> says:</div>
+          <% end %>
+        </div>
 
+        <div class="col">
+           <%= message.content %>
+        </div>
 
-your chat :
-<% @chat.messages.reverse_order.each do  |message| %>
-<div class="row">
-  <div class="col">
-     <%= message.user.name %> says
+        <div class="col">
+           <%= message.valentime.strftime("%b %d")%>
+        </div>
 
+    </div>
+    <% end %>
   </div>
-  <div class="col">
-     <%= message.content %>
-
-  </div>
-  <div class="col">
-     <%= message.valentime.strftime("%b %d, %l:%M %P") %>
-
-  </div>
-</div>
-<% end %>
 
 <% else %>
-<p>Sorry. You do not have access to this page!</p>
-
+  <p>Sorry. You do not have access to this page!</p>
 <% end %>
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  body  {
+    background-image: url("https://wallpaperplay.com/walls/full/d/7/f/86247.jpg");
+    color: black;
+    font-family: 'VT323', monospace;
+    text-align: center;
+    margin-bottom: 5%;
+    }
+
+    .chat-center-width {
+      width: 60%;
+      margin: auto;
+      background-color:rgb(255,255,255,0.5);
+
+    }
+
+
+    .user-chat {
+      color: red;
+      font-weight: bold;
+    }
+
+    .dachi-chat {
+      color: blue;
+      font-weight: bold;
+    }
+
+    .center {
+    margin: auto;
+    width: 50%;
+    }
+
+    .vertical-center {
+    margin: auto;
+    margin-top: 20%;
+    }
+
+
+</STYLE>

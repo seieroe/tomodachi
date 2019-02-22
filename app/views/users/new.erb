@@ -1,18 +1,49 @@
-<h1>Create New Account</h1>
 
-<% if !!flash[:errors] %>
-  <% flash[:errors].each do |message| %>
-    <%= message %><br>
-  <% end %>
-<% end %>
+<div class="vertical-center">
+  <div class="center">
+    <h1>Create New Account</h1>
+
+    <% if !!flash[:errors] %>
+      <% flash[:errors].each do |message| %>
+        <%= message %><br>
+      <% end %>
+    <% end %>
 
 
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-  <%= f.submit %>
-<% end %>
+    <%= form_for @user do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %><br>
+      <%= f.label :email %>
+      <%= f.text_field :email %><br>
+      <%= f.label :password %>
+      <%= f.password_field :password %><br>
+      <%= f.submit class: "btn btn-light"%>
+    <% end %>
+  </div>
+</div>
+
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  body  {
+    background-image: url("https://wallpaperplay.com/walls/full/d/7/f/86247.jpg");
+    color: black;
+    font-family: 'VT323', monospace;
+    text-align: center;
+    }
+
+    .center {
+    margin: auto;
+    width: 50%;
+    }
+
+    .vertical-center {
+    margin: auto;
+    margin-top: 15%;
+    <!-- border: 3px solid red;
+    padding: 50px; -->
+    background-color:rgb(255,255,255,0.5);
+    }
+
+
+</STYLE>

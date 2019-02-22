@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :photos
   resources :messages
   resources :user_chats
-  resources :chats
-  resources :heart_strings
-  resources :users
+  resources :chats, only: [:new, :create, :show]
+  resources :heart_strings, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show]
 
   get '/start_chat/:heart_string_id' => 'heart_strings#chat', as: :start_chat
   # post '/chat/:id', to: "chat#message"

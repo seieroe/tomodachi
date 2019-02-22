@@ -1,11 +1,23 @@
-
+<div class="center">
 <h2 class="text-center"> welcome, <%= current_user.name.downcase %>! </h2>
 
 
 
 <h5 class="text-center"><%= link_to "♥️ make new heartstring ♥️", new_heart_string_path %></h5>
+</div>
 
-<h4> 💕 your tomodachis: 💕</h4>
+<h4> 💕 you have
+
+  <% my_heart_string_arr = [] %>
+    <% HeartString.all.each do |heart_string| %>
+    <% if current_user == heart_string.user %>
+      <% my_heart_string_arr << heart_string %>
+    <% elsif current_user == heart_string.tomodachi %>
+      <% my_heart_string_arr << heart_string %>
+    <% end %>
+    <% end %>
+  <%= my_heart_string_arr.length %>
+  tomodachi(s): 💕</h4>
 
 <ul>
 
@@ -18,3 +30,32 @@
  <% end %>
 
  </ul>
+
+
+ <STYLE TYPE="text/css" MEDIA=screen>
+
+   body  {
+     background-image: url("https://wallpaperplay.com/walls/full/d/7/f/86247.jpg");
+     color: black;
+     font-family: 'VT323', monospace;
+     text-align: center;}
+
+     .center {
+     margin: auto;
+     width: 50%;
+
+   }
+
+     .vertical-center {
+     margin: 0;
+     position: absolute;
+     top: 50%;
+     -ms-transform: translateY(-50%);
+     transform: translateY(-50%);
+     border: 3px solid red;
+     padding: 50px;
+     background-color:rgb(255,255,255,0.5);
+   }
+
+
+ </STYLE>

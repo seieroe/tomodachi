@@ -13,8 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+ 
  body {
-   background-color: ffccff;
+   background-color: pink;
    font-family: 'Mukta', sans-serif;
    font-family: 'Anton', sans-serif;
  }
+
+h1 {
+  text-align: center;
+}

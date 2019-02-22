@@ -1,13 +1,41 @@
-<% if !!flash[:errors] %>
-  <% flash[:errors].each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
 
-<%= form_for @heart_string do |f| %>
-who is your tomodachi ?
-  <%= current_user.name %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.collection_select :tomodachi_id, User.all.where.not(id: current_user.id), :id, :name %>
-  <%= f.submit %>
-<% end %>
+<div class="vertical-center">
+  <div class="center">
+    <% if !!flash[:errors] %>
+      <% flash[:errors].each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+
+    <%= form_for @heart_string do |f| %>
+    who is your tomodachi ?
+      <%= current_user.name %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.collection_select :tomodachi_id, User.all.where.not(id: current_user.id), :id, :name %>
+      <%= f.submit class: "btn btn-light"%>
+    <% end %>
+  </div>
+</div>
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  body  {
+    background-image: url("https://wallpaperplay.com/walls/full/d/7/f/86247.jpg");
+    color: black;
+    font-family: 'VT323', monospace;
+    text-align: center;
+    }
+
+    .center {
+    margin: auto;
+    width: 50%;
+    }
+
+    .vertical-center {
+    margin: auto;
+    margin-top: 20%;
+    background-color:rgb(255,255,255,0.5);
+    }
+
+
+</STYLE>

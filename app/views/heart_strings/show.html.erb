@@ -1,24 +1,57 @@
-<h1><%= @heart_string.user.name %> & <%= @heart_string.tomodachi.name %></h1>
+<h1 class="text-center"><%= @heart_string.user.name %> & <%= @heart_string.tomodachi.name %></h1>
 
 <% if @heart_string.chat %>
   <% if @heart_string.tomodachi != current_user %>
-    <%= link_to "continue chatting with #{@heart_string.tomodachi.name}", chat_path(@heart_string.chat) %>
+    <h5 class="text-center"><%= link_to "continue chatting with #{@heart_string.tomodachi.name}", chat_path(@heart_string.chat) %></h5>
   <% else %>
-    <%= link_to "continue chatting with #{@heart_string.user.name}", chat_path(@heart_string.chat) %>
+    <h5 class="text-center"><%= link_to "continue chatting with #{@heart_string.user.name}", chat_path(@heart_string.chat) %></h5>
   <% end %>
 <% else %>
-  <%= link_to 'start chat', start_chat_path(@heart_string) %>
+  <h5 class="text-center"><%= link_to 'start chat', start_chat_path(@heart_string) %></h5>
 <% end %>
 
 
 <h4> photos </h4>
 
 <%= form_for @photo do |f| %>
-  <%= f.file_field :photo %>
+  <%= f.file_field :photo , class: "btn btn-light"%>
   <%= f.hidden_field :heart_string_id %>
-  <%= f.submit "Add Photo"%>
+  <%= f.submit "Add Photo", class: "btn btn-light"%>
 <% end %>
 
 <% @heart_string.photos.each do |photo| %>
 <%= image_tag photo.photo %>
 <% end %>
+
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  body  {
+    background-image: url("https://wallpaperplay.com/walls/full/d/7/f/86247.jpg");
+    color: black;
+    font-family: 'VT323', monospace;
+    text-align: center;
+    }
+
+    .center {
+    margin: auto;
+    width: 50%;
+    }
+
+    .vertical-center {
+    margin: auto;
+    margin-top: 20%;
+    border: 3px solid red;
+    padding: 50px;
+    background-color:rgb(255,255,255,0.5);
+    }
+
+    img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+
+</STYLE>
